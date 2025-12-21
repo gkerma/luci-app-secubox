@@ -1,0 +1,17 @@
+{
+	"luci-app-secubox": {
+		"description": "Grant access to SecuBox Master Dashboard",
+		"read": {
+			"ubus": {
+				"luci.secubox": ["status", "modules", "modules_by_category", "module_info", "health", "diagnostics"]
+			},
+			"uci": ["secubox"]
+		},
+		"write": {
+			"ubus": {
+				"luci.secubox": ["start_module", "stop_module", "restart_module"]
+			},
+			"uci": ["secubox"]
+		}
+	}
+}
