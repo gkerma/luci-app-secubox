@@ -4,7 +4,7 @@
 'require ui';
 
 var callModules = rpc.declare({
-	object: 'luci.secubox',
+	object: 'secubox',
 	method: 'modules',
 	expect: { modules: [] }
 });

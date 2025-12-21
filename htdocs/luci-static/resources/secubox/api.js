@@ -3,31 +3,31 @@
 'require rpc';
 
 var callStatus = rpc.declare({
-	object: 'luci.secubox',
+	object: 'secubox',
 	method: 'status',
 	expect: { }
 });
 
 var callModules = rpc.declare({
-	object: 'luci.secubox',
+	object: 'secubox',
 	method: 'modules',
 	expect: { modules: [] }
 });
 
 var callHealth = rpc.declare({
-	object: 'luci.secubox',
+	object: 'secubox',
 	method: 'health',
 	expect: { checks: [] }
 });
 
 var callRestartModule = rpc.declare({
-	object: 'luci.secubox',
+	object: 'secubox',
 	method: 'restart_module',
 	params: ['module']
 });
 
 var callDiagnostics = rpc.declare({
-	object: 'luci.secubox',
+	object: 'secubox',
 	method: 'diagnostics',
 	expect: { }
 });
