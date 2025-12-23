@@ -72,11 +72,15 @@ jobs:
       - name: Build package
         run: |
           cd sdk
-          echo "src-git luci https://github.com/openwrt/luci.git;openwrt-23.05" >> feeds.conf.default
+          grep -q "^src-git luci" feeds.conf.default || \
+            echo "src-git luci https://github.com/openwrt/luci.git;openwrt-23.05" >> feeds.conf.default
+          
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+          
           mkdir -p "package/${{ env.PKG_NAME }}"
           rsync -av --exclude='.git' --exclude='sdk' --exclude='*.tar.*' ../. "package/${{ env.PKG_NAME }}/"
+          
           make defconfig
           make "package/${{ env.PKG_NAME }}/compile" V=s -j$(nproc) || \
             make "package/${{ env.PKG_NAME }}/compile" V=s -j1
