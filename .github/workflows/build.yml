@@ -75,7 +75,19 @@ jobs:
           grep -q "^src-git luci" feeds.conf.default || \
             echo "src-git luci https://github.com/openwrt/luci.git;openwrt-23.05" >> feeds.conf.default
           
-          ./scripts/feeds update -a
+          # Création explicite de feeds.conf avec miroirs GitHub
+          cat > feeds.conf << 'EOF'
+          src-git base https://github.com/openwrt/openwrt.git;openwrt-23.05
+          src-git packages https://github.com/openwrt/packages.git;openwrt-23.05
+          src-git luci https://github.com/openwrt/luci.git;openwrt-23.05
+          src-git routing https://github.com/openwrt/routing.git;openwrt-23.05
+          EOF
+          
+          # Retry logic
+          for attempt in 1 2 3; do
+              ./scripts/feeds update -a && break
+              sleep $((30 * attempt))
+          done
           ./scripts/feeds install -a
           
           mkdir -p "package/${{ env.PKG_NAME }}"
