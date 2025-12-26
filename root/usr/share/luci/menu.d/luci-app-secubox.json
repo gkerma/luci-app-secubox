@@ -13,5 +13,45 @@
         "title": "Modules",
         "order": 20,
         "action": {"type": "view", "path": "secubox/modules"}
+    },
+    "admin/secubox/alerts": {
+        "title": "Alerts",
+        "order": 22,
+        "action": {"type": "view", "path": "secubox/alerts"}
+    },
+    "admin/secubox/settings": {
+        "title": "Settings",
+        "order": 25,
+        "action": {"type": "view", "path": "secubox/settings"}
+    },
+    "admin/secubox/security": {
+        "title": "Security & Access",
+        "order": 30,
+        "action": {"type": "firstchild"}
+    },
+    "admin/secubox/monitoring": {
+        "title": "Monitoring & Analytics",
+        "order": 35,
+        "action": {"type": "firstchild"}
+    },
+    "admin/secubox/monitoring/overview": {
+        "title": "System Monitoring",
+        "order": 10,
+        "action": {"type": "view", "path": "secubox/monitoring"}
+    },
+    "admin/secubox/network": {
+        "title": "Network Management",
+        "order": 40,
+        "action": {"type": "firstchild"}
+    },
+    "admin/secubox/system": {
+        "title": "System & Performance",
+        "order": 50,
+        "action": {"type": "firstchild"}
+    },
+    "admin/secubox/services": {
+        "title": "Services & Applications",
+        "order": 60,
+        "action": {"type": "firstchild"}
     }
 }
